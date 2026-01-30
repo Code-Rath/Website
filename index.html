@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toolzy – Calculator & Tools · CodeRath</title>
+    <meta name="description"
+        content="Toolzy and EMI & SIP Calculator By RR by CodeRath. All‑in‑one utility apps with finance, image, converter and random tools." />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #111827;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero gradient background */
+        .hero-gradient {
+            background: linear-gradient(135deg, #312e81, #6d28d9, #1d4ed8);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Star dots */
+        .hero-stars span {
+            position: absolute;
+            border-radius: 9999px;
+            background: #fff;
+            width: 4px;
+            height: 4px;
+            opacity: 0.8;
+            animation: hero-pulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes hero-pulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        /* Phone frame */
+        .phone-frame {
+            border-radius: 2.75rem;
+            border: 10px solid #111827;
+            background: #111827;
+            box-shadow: 0 24px 80px rgba(15, 23, 42, 0.8);
+            overflow: hidden;
+        }
+
+        /* Solutions dropdown */
+        .solutions-dropdown {
+            min-width: 360px;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+        }
+
+        .solutions-categories button.active {
+            background-color: #ede9fe;
+            color: #5b21b6;
+        }
+
+        /* Card hover elevation */
+        .card-elevate {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card-elevate:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+        }
+
+        /* Utility badges */
+        .badge-pill {
+            border-radius: 9999px;
+        }
+
+        .card-hover {
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .12);
+        }
+
+        .header-top {
+            background-color: rgba(255, 255, 255, 0);
+            /* fully transparent */
+            color: #ffffff;
+            transition: background-color .2s ease, color .2s ease;
+        }
+
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.96);
+            /* almost white */
+            color: #111827;
+        }
+
+        .header-transition {
+            transition: background-color .2s ease, color .2s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Header -->
+    <header id="mainHeader" class="sticky-top bg-opacity-80 header-top">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <div class="container-xl py-2">
+                <a href="#top" class="navbar-brand d-flex align-items-center gap-2 text-decoration-none">
+                    <div id="main-logo" class="rounded-2 bg-white overflow-hidden" style="width:32px;height:32px;">
+                        <img src="assets/coderath-logo.png" alt="CodeRath" class="w-100 h-100 object-fit-cover">
+                    </div>
+                    <span class="fw-semibold fs-6 mb-0">CodeRath</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-md-center gap-md-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#top">Home</a>
+                        </li>
+
+                        <!-- Solutions dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="solutionsMenu" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Solutions
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end p-3 border-0 shadow rounded-4"
+                                aria-labelledby="solutionsMenu" style="min-width: 360px;">
+                                <div class="row g-3">
+                                    <!-- Left: categories -->
+                                    <div class="col-4">
+                                        <div class="d-flex flex-column gap-1 solutions-categories">
+                                            <button type="button"
+                                                class="btn btn-sm w-100 text-start rounded-3 btn-light active"
+                                                data-solutions-category="android-apps">
+                                                Android apps
+                                            </button>
+                                            <button type="button"
+                                                class="btn btn-sm w-100 text-start rounded-3 btn-light"
+                                                data-solutions-category="desktop-apps">
+                                                Desktop apps
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- Right: content -->
+                                    <div class="col-8">
+                                        <div id="solutions-android-apps"
+                                            class="d-flex flex-column gap-2 small text-muted">
+                                            <a href="#toolzy-card"
+                                                class="d-flex align-items-start gap-2 px-2 py-2 rounded-3 text-decoration-none text-reset">
+                                                <div class="d-flex align-items-center justify-content-center rounded-3 bg-light text-primary fw-semibold"
+                                                    style="width:24px;height:24px;font-size:10px;">
+                                                    TZ
+                                                </div>
+                                                <div>
+                                                    <div class="fw-semibold text-dark small">Toolzy – Calculator &amp;
+                                                        Tools</div>
+                                                    <p class="mb-0 text-muted" style="font-size:11px;">
+                                                        All‑in‑one utilities with finance, image, converter and random
+                                                        tools.
+                                                    </p>
+                                                </div>
+                                            </a>
+
+                                            <a href="#emi-sip-card"
+                                                class="d-flex align-items-start gap-2 px-2 py-2 rounded-3 text-decoration-none text-reset">
+                                                <div class="d-flex align-items-center justify-content-center rounded-3 bg-light text-success fw-semibold"
+                                                    style="width:24px;height:24px;font-size:10px;">
+                                                    EMI
+                                                </div>
+                                                <div>
+                                                    <div class="fw-semibold text-dark small">EMI &amp; SIP Calculator By
+                                                        RR</div>
+                                                    <p class="mb-0 text-muted" style="font-size:11px;">
+                                                        Smart EMI, SIP and loan planning tools for everyday finance.
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div id="solutions-desktop-apps" class="d-none small text-muted">
+                                            <p class="mb-0" style="font-size:11px;">
+                                                Desktop apps will appear here once available.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="privacy-policy.html">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="top" class="hero-gradient py-5 py-md-5" style="margin-top: -75px;">
+            <!-- stars -->
+            <div class="hero-stars">
+                <span style="top:3rem;left:4rem;"></span>
+                <span style="top:5rem;left:25%;animation-delay:0.3s;"></span>
+                <span style="top:7.5rem;right:33%;animation-delay:0.6s;"></span>
+                <span style="top:11rem;right:5rem;width:6px;height:6px;animation-delay:0.9s;"></span>
+                <span style="top:14rem;left:33%;animation-delay:1.2s;"></span>
+                <span style="bottom:8rem;left:5rem;animation-delay:1.5s;"></span>
+                <span style="bottom:12rem;right:25%;animation-delay:1.8s;"></span>
+            </div>
+
+            <div class="container-xl position-relative py-5">
+                <div class="row g-5 align-items-center">
+                    <!-- left -->
+                    <div class="col-lg-6 reveal">
+                        <div
+                            class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white bg-opacity-25 backdrop-blur text-white small mb-3">
+                            <img src="assets/toolzy-logo.png" alt="Toolzy" class="rounded-2"
+                                style="width:20px;height:20px;">
+                            <span>Toolzy</span>
+                        </div>
+
+                        <h1 class="display-5 fw-bold lh-tight mb-3">
+                            Meet Toolzy, the #1 app for everyday tools
+                        </h1>
+                        <p class="fs-5 text-white-50 mb-4" style="max-width:34rem;">
+                            An all-in-one Android app packed with finance calculators, image tools, converters and
+                            random utilities— all in one clean place.
+                        </p>
+
+                        <div class="d-flex flex-column gap-3">
+                            <span
+                                class="badge badge-pill bg-white bg-opacity-25 text-white fw-semibold align-self-start px-4 py-2 small">
+                                Coming soon on Google Play
+                            </span>
+                            <div class="d-flex flex-wrap align-items-center gap-3">
+                                <button type="button" class="btn btn-light px-4 py-2 fw-semibold" data-bs-toggle="modal"
+                                    data-bs-target="#toolzyNotifyModal">
+                                    Notify me
+                                </button>
+                                <span class="small text-white-75">
+                                    Get an email when Toolzy is available publicly.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- right: screenshot in phone frame -->
+                    <div class="col-lg-6 reveal d-flex justify-content-center justify-content-lg-end">
+                        <div class="phone-frame" style="width:260px;max-width:320px;">
+                            <img src="assets/toolzy-home-screenshot.png" alt="Toolzy app home screen"
+                                class="d-block w-100 h-100" style="object-fit:cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About CodeRath -->
+        <section class="py-5 bg-white">
+            <div class="container-xl">
+                <div class="reveal text-center mb-4">
+                    <h2 class="h1 fw-bold mb-3">About CodeRath</h2>
+                    <p class="fs-5 text-muted mx-auto" style="max-width:40rem;">
+                        CodeRath is a small studio focused on clean, practical tools with predictable, minimal
+                        experiences.
+                    </p>
+                </div>
+
+                <div class="reveal mx-auto" style="max-width:40rem;">
+                    <p class="small text-muted mb-3">
+                        CodeRath builds focused digital tools with a strong emphasis on clarity, speed and stability.
+                        From finance utilities to small daily helpers, each product is designed to feel light and easy
+                        to trust.
+                    </p>
+                    <p class="small text-muted mb-0">
+                        The current focus is Android utility apps, with room for desktop tools and AI‑assisted utilities
+                        in the
+                        future. The goal is to remove friction from everyday tasks rather than add more noise.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="py-5 bg-light">
+            <div class="container-xl">
+                <div class="reveal text-center mx-auto" style="max-width:40rem;">
+                    <h2 class="h1 fw-bold mb-3">CodeRath services</h2>
+                    <p class="fs-5 text-muted">
+                        Utility‑driven apps and tools with a simple, predictable experience.
+                    </p>
+                </div>
+
+                <div class="reveal row g-4 justify-content-center mt-4">
+                    <!-- Android card -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="card border-0 shadow-sm card-hover h-100">
+                            <div class="card-body">
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-3"
+                                    style="width:40px;height:40px;background:#ede9fe;color:#5b21b6;font-size:12px;font-weight:600;">
+                                    Android
+                                </div>
+                                <h3 class="h6 fw-semibold mb-2">Android utility apps</h3>
+                                <p class="small text-muted mb-0">
+                                    Design and development of focused Android apps like Toolzy and EMI &amp; SIP
+                                    Calculator, built for
+                                    speed, reliability and clean UX.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop card -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="card border-0 shadow-sm card-hover h-100">
+                            <div class="card-body">
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-3"
+                                    style="width:40px;height:40px;background:#dbeafe;color:#1d4ed8;font-size:12px;font-weight:600;">
+                                    Desktop
+                                </div>
+                                <h3 class="h6 fw-semibold mb-2">Desktop &amp; tooling (planned)</h3>
+                                <p class="small text-muted mb-0">
+                                    Future lightweight desktop utilities for calculations, automation and helpers that
+                                    complement existing
+                                    mobile apps.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI/ML card -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="card border-0 shadow-sm card-hover h-100">
+                            <div class="card-body">
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-3"
+                                    style="width:40px;height:40px;background:#d1fae5;color:#047857;font-size:12px;font-weight:600;">
+                                    AI/ML
+                                </div>
+                                <h3 class="h6 fw-semibold mb-2">AI‑assisted utilities</h3>
+                                <p class="small text-muted mb-0">
+                                    Carefully selected AI features that keep flows simple while making everyday actions
+                                    smarter.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Our products -->
+        <section class="py-5 bg-white">
+            <div class="container-xl text-center">
+                <div class="reveal mb-4">
+                    <h2 class="h1 fw-bold mb-3">Our products</h2>
+                    <p class="fs-5 text-muted mx-auto" style="max-width:40rem;">
+                        Apps crafted under CodeRath, starting with Android utilities.
+                    </p>
+                </div>
+
+                <div class="row g-4 justify-content-center mt-3">
+                    <!-- Toolzy -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <article id="toolzy-card" class="card border-0 shadow-sm card-hover h-100 text-start">
+                            <div class="card-body">
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-light text-primary fw-semibold mb-3"
+                                    style="width:40px;height:40px;font-size:11px;">
+                                    TZ
+                                </div>
+                                <h3 class="h6 fw-semibold mb-2">Toolzy – Calculator &amp; Tools</h3>
+                                <p class="small text-muted mb-3">
+                                    All‑in‑one utility app with finance calculators, image tools, converters and random
+                                    helpers,
+                                    designed to keep everyday actions in one clean place.
+                                </p>
+                                <div class="d-flex flex-wrap align-items-center gap-2">
+                                    <span class="badge rounded-pill bg-light text-primary small px-3 py-2">
+                                        Coming soon
+                                    </span>
+                                    <button type="button"
+                                        class="btn btn-link p-0 small fw-semibold text-decoration-underline"
+                                        onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+                                        Notify me
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- EMI & SIP -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <article id="emi-sip-card" class="card border-0 shadow-sm card-hover h-100 text-start">
+                            <div class="card-body">
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-light text-success fw-semibold mb-3"
+                                    style="width:40px;height:40px;font-size:11px;">
+                                    EMI
+                                </div>
+                                <h3 class="h6 fw-semibold mb-2">EMI &amp; SIP Calculator By RR</h3>
+                                <p class="small text-muted mb-3">
+                                    A compact toolkit for EMI, SIP and loan calculations with a clean interface and
+                                    quick, repeatable flows
+                                    for everyday money decisions.
+                                </p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="emi-sip-app.html" class="btn btn-outline-secondary btn-sm fw-semibold">
+                                        View details
+                                    </a>
+                                    <a href="https://play.google.com/store/apps/details?id=com.roh.tools.beta&hl=en_IN"
+                                        target="_blank" rel="noopener" class="btn btn-success btn-sm fw-semibold">
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-5 bg-light">
+            <div class="container-xl">
+                <div class="reveal text-center mb-4">
+                    <h2 class="h1 fw-bold mb-3">Get in touch</h2>
+                    <p class="fs-5 text-muted mx-auto" style="max-width:40rem;">
+                        Request a feature, report an issue, or ask for a small change or fix in our apps.
+                    </p>
+                </div>
+
+                <div class="reveal row g-4 align-items-start">
+                    <div class="col-md-6">
+                        <p class="text-muted mb-3">
+                            The contact form is powered by Microsoft Forms, so submissions go directly to a secure
+                            external form
+                            without extra backend code on this site.
+                        </p>
+                        <p class="text-muted mb-3">
+                            Please mention which app you're using, your device details, and a short description of the
+                            feature or
+                            issue. If it's a bug, including steps to reproduce helps a lot.
+                        </p>
+                        <p class="small text-muted">
+                            For privacy and data usage in forms and apps, see the
+                            <a href="privacy.html" class="link-primary text-decoration-underline">Privacy Policy</a>.
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 position-relative">
+                        <div class="position-absolute top-0 start-0 end-0 bottom-0 rounded-4"
+                            style="background:linear-gradient(135deg,#8b5cf6,#ec4899,#3b82f6);opacity:0.3;filter:blur(24px);">
+                        </div>
+                        <div class="position-relative bg-white rounded-4 border border-light shadow p-2">
+                            <!-- <iframe src="about:blank" title="Contact CodeRath" class="w-100 rounded-3 border-0"
+                                style="height:24rem;background:#f9fafb;" loading="lazy"></iframe> -->
+                            <iframe width="640px" height="480px"
+                                src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAZAAGPozLBUMDA3NzVRMU9aTTlFNktVSjBINkE3Q0M3SS4u&embed=true"
+                                frameborder="0" marginwidth="0" marginheight="0"
+                                style="border: none; max-width:100%; max-height:100vh" allowfullscreen
+                                webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light border-top">
+        <div class="container-xl py-3">
+            <div
+                class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 small text-muted">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-3 overflow-hidden" style="width:28px;height:28px;">
+                        <img src="assets/coderath-logo.png" alt="CodeRath" class="w-100 h-100 object-fit-cover">
+                    </div>
+                    <span>© <span id="year"></span> CodeRath. All rights reserved.</span>
+                </div>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#top" class="text-muted text-decoration-none">Back to top</a>
+                    <a href="#toolzy-card" class="text-muted text-decoration-none">Toolzy</a>
+                    <a href="#emi-sip-card" class="text-muted text-decoration-none">EMI &amp; SIP App</a>
+                    <a href="privacy-policy.html" class="text-muted text-decoration-none">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="toolzyNotifyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content border-0 rounded-4">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-semibold">Get notified when Toolzy launches</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="rounded-4 border border-light shadow-sm p-2 bg-white">
+                        <iframe width="640px" height="480px"
+                            src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAZAAGPozLBUMEFNQUJVM0ZVWVlDNE5BMFI2QUlWTVZVNS4u&embed=true"
+                            frameborder="0" marginwidth="0" marginheight="0"
+                            style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen
+                            mozallowfullscreen msallowfullscreen> </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('reveal-visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        // Solutions category switch
+        document.querySelectorAll('[data-solutions-category]').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                const key = btn.getAttribute('data-solutions-category');
+
+                document.querySelectorAll('#solutions-android-apps, #solutions-desktop-apps')
+                    .forEach(panel => panel.classList.add('d-none'));
+                const active = document.getElementById('solutions-' + key);
+                if (active) active.classList.remove('d-none');
+
+                btn.parentElement.querySelectorAll('[data-solutions-category]')
+                    .forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+    <script>
+        const header = document.getElementById('mainHeader');
+        const links = header.querySelectorAll('.nav-link, .navbar-brand, a');
+
+        function updateHeaderOpacity() {
+            const max = 80;                     // scroll px where effect finishes
+            const y = Math.min(window.scrollY, max);
+            const t = y / max;                // 0 at top, 1 after max px
+
+            if (window.scrollY > 75) {
+                document.getElementById("main-logo").classList.remove("bg-white");
+            } else {
+                document.getElementById("main-logo").classList.add("bg-white");
+            }
+
+            // background: transparent at top -> white when scrolled
+            const alpha = 0.96 * t;             // 0 .. 0.96
+            header.style.backgroundColor = `rgba(255,255,255,${alpha})`;
+
+            // text: white at top -> dark when scrolled
+            const base = 255;                   // white
+            const target = 30;                  // dark
+            const value = Math.round(base - (base - target) * t); // 255 -> 30
+            const color = `rgb(${value},${value},${value})`;
+
+            header.style.color = color;
+            links.forEach(el => el.style.color = color);
+        }
+
+        window.addEventListener('scroll', updateHeaderOpacity);
+        window.addEventListener('load', updateHeaderOpacity);
+    </script>
+
+</body>
+
+</html>

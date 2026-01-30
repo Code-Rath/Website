@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMI & SIP Calculator By RR – CodeRath</title>
+  <meta name="description" content="EMI & SIP Calculator By RR – an Android app combining EMI, SIP, SWP, compounding, converters, image tools and more daily utilities in one place." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Simple top nav -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl overflow-hidden">
+          <img src="assets/coderath-logo.png" alt="CodeRath" class="w-full h-full object-cover">
+        </div>
+        <span class="font-semibold text-base">CodeRath</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+        <a href="index.html#toolzy" class="hover:text-violet-600 transition-colors">Toolzy</a>
+        <a href="index.html#emi-sip" class="hover:text-violet-600 transition-colors">EMI & SIP App</a>
+        <a href="index.html#contact" class="hover:text-violet-600 transition-colors">Contact</a>
+        <a href="privacy.html" class="hover:text-violet-600 transition-colors">Privacy</a>
+      </nav>
+
+      <a href="index.html" class="text-sm text-gray-600 hover:text-violet-600 transition-colors">
+        ← Back to main site
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section with gradient -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-800 to-blue-900 text-white">
+      <!-- Stars effect (subtle) -->
+      <div class="absolute inset-0 opacity-30">
+        <div class="absolute top-16 left-20 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+        <div class="absolute top-32 right-32 w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+        <div class="absolute bottom-24 left-1/3 w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+      </div>
+
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+        <div class="reveal text-center space-y-6 max-w-3xl mx-auto">
+          <!-- App icon -->
+          <div class="flex justify-center mb-6">
+            <div class="w-32 h-32 rounded-[2rem] bg-white/10 backdrop-blur-sm border-2 border-white/20 flex items-center justify-center overflow-hidden shadow-2xl">
+              <!-- Placeholder for app icon - replace with actual icon or use emoji/text -->
+              <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-emerald-400 via-cyan-400 to-blue-500 flex items-center justify-center text-4xl">
+                ₹
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-block px-3 py-1.5 rounded-full bg-emerald-500/90 text-white text-sm font-medium">
+            Live on Google Play
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+            EMI & SIP Calculator By RR
+          </h1>
+
+          <p class="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+            EMI & SIP calculator, image compressor and 20+ daily tools in one app. 
+            Plan loans, grow investments and shrink photo sizes with ease.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4 pt-4">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.roh.tools.beta&hl=en_IN"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition-all shadow-xl text-base"
+            >
+              Download on Play Store
+            </a>
+            <a
+              href="index.html"
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-semibold hover:bg-white/30 transition-all text-base"
+            >
+              Back to main site
+            </a>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-2 pt-2">
+            <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white/90 text-xs">100+ downloads</span>
+            <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white/90 text-xs">Contains ads</span>
+            <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white/90 text-xs">Updated Jan 2, 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App screenshots section -->
+    <section class="bg-gray-50 py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="reveal text-center mb-10">
+          <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">See it in action</h2>
+          <p class="text-base text-gray-600">Screenshots from the app showing key features.</p>
+        </div>
+
+        <!-- Screenshot grid - placeholders for 4 screenshots -->
+        <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          <!-- Screenshot 1 placeholder -->
+          <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-gray-900 bg-gradient-to-br from-purple-100 to-blue-100 aspect-[9/19] flex items-center justify-center">
+            <div class="text-center p-4">
+              <div class="text-4xl mb-2">📊</div>
+              <div class="text-xs text-gray-600">Replace with<br/>screenshot 1</div>
+            </div>
+          </div>
+
+          <!-- Screenshot 2 placeholder -->
+          <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-gray-900 bg-gradient-to-br from-pink-100 to-rose-100 aspect-[9/19] flex items-center justify-center">
+            <div class="text-center p-4">
+              <div class="text-4xl mb-2">💰</div>
+              <div class="text-xs text-gray-600">Replace with<br/>screenshot 2</div>
+            </div>
+          </div>
+
+          <!-- Screenshot 3 placeholder -->
+          <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-gray-900 bg-gradient-to-br from-emerald-100 to-cyan-100 aspect-[9/19] flex items-center justify-center">
+            <div class="text-center p-4">
+              <div class="text-4xl mb-2">🖼️</div>
+              <div class="text-xs text-gray-600">Replace with<br/>screenshot 3</div>
+            </div>
+          </div>
+
+          <!-- Screenshot 4 placeholder -->
+          <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-gray-900 bg-gradient-to-br from-blue-100 to-indigo-100 aspect-[9/19] flex items-center justify-center">
+            <div class="text-center p-4">
+              <div class="text-4xl mb-2">⚙️</div>
+              <div class="text-xs text-gray-600">Replace with<br/>screenshot 4</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="reveal text-center text-sm text-gray-500 mt-6">
+          💡 Replace these placeholder boxes with actual app screenshots saved in de class="px-2 py-0.5 rounded bg-gray-200">assets/</code> folder
+        </p>
+      </div>
+    </section>
+
+    <!-- Features section -->
+    <section class="bg-white py-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="reveal text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">What's included?</h2>
+          <p class="text-lg text-gray-600">Master your money, manage daily tasks and more.</p>
+        </div>
+
+        <!-- Finance tools -->
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-2xl shadow-lg shadow-emerald-400/40">
+              💰
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Finance tools – Master your money</h3>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 pl-0 sm:pl-16">
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">EMI Calculator</h4>
+              <p class="text-sm text-gray-600">Home, car and personal loans with full monthly breakdown, interest and principal split.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">SIP Calculator</h4>
+              <p class="text-sm text-gray-600">Future value estimator for systematic investment plans with expected returns.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">SWP Planner</h4>
+              <p class="text-sm text-gray-600">Systematic withdrawal plan calculator for retirement or passive income planning.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Compounding Calculator</h4>
+              <p class="text-sm text-gray-600">See how your investments grow with compound interest over time.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Bill & Tip Splitter</h4>
+              <p class="text-sm text-gray-600">Split restaurant bills and calculate tips among friends quickly.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Simple Calculator & Change</h4>
+              <p class="text-sm text-gray-600">Basic math and change calculator for quick everyday calculations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image & media tools -->
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-2xl shadow-lg shadow-pink-400/40">
+              📷
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Image & media tools</h3>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 pl-0 sm:pl-16">
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Image Compressor</h4>
+              <p class="text-sm text-gray-600">Reduce photo file sizes while keeping usable quality for sharing or uploading.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Speaker Cleaner</h4>
+              <p class="text-sm text-gray-600">Remove water and dust from phone speakers using sound frequency.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+                            <h4 class="font-semibold text-gray-900 mb-1">Speech to Text</h4>
+              <p class="text-sm text-gray-600">Convert spoken words into text using device voice recognition.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Utilities & converters -->
+        <div class="reveal mb-16">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-2xl shadow-lg shadow-blue-400/40">
+              ⚙️
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Daily utilities & converters</h3>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 pl-0 sm:pl-16">
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Unit Converter</h4>
+              <p class="text-sm text-gray-600">Convert between length, weight, temperature, volume and other units.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Currency Converter</h4>
+              <p class="text-sm text-gray-600">Real-time currency conversion (requires internet connection).</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Date & Age Calculator</h4>
+              <p class="text-sm text-gray-600">Calculate age, days between dates and other time-related calculations.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Change Calculator</h4>
+              <p class="text-sm text-gray-600">Quick change calculator for cash transactions and money handling.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security & random tools -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-violet-500 flex items-center justify-center text-2xl shadow-lg shadow-purple-400/40">
+              🎲
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Security & random tools</h3>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 pl-0 sm:pl-16">
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Password Generator</h4>
+              <p class="text-sm text-gray-600">Generate strong, random passwords with customizable length and characters.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Coin Flip</h4>
+              <p class="text-sm text-gray-600">Virtual coin toss for quick yes/no decisions.</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5 border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-1">Random Number</h4>
+              <p class="text-sm text-gray-600">Generate random numbers within custom ranges for games or selections.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose section -->
+    <section class="bg-gradient-to-br from-purple-50 to-blue-50 py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="reveal text-center space-y-4 mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Why choose this app?</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            One app for multiple daily needs, saving storage and keeping things simple.
+          </p>
+        </div>
+
+        <div class="reveal grid sm:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 text-center">
+            <div class="text-4xl mb-3">📱</div>
+            <h3 class="font-semibold text-gray-900 mb-2">All-in-one solution</h3>
+            <p class="text-sm text-gray-600">
+              20+ tools in one app means no need to download separate apps for each task.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 text-center">
+            <div class="text-4xl mb-3">⚡</div>
+            <h3 class="font-semibold text-gray-900 mb-2">Fast & lightweight</h3>
+            <p class="text-sm text-gray-600">
+              Designed to be quick and responsive even on modest devices.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 text-center">
+            <div class="text-4xl mb-3">📴</div>
+            <h3 class="font-semibold text-gray-900 mb-2">Many tools offline</h3>
+            <p class="text-sm text-gray-600">
+              Most calculators and converters work without internet connection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App info -->
+    <section class="bg-white py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="reveal bg-gray-50 rounded-3xl border border-gray-200 p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">App information</h3>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div>
+              <span class="text-gray-600">Developer:</span>
+              <span class="font-medium text-gray-900 ml-2">CodeRath</span>
+            </div>
+            <div>
+              <span class="text-gray-600">Last updated:</span>
+              <span class="font-medium text-gray-900 ml-2">Jan 2, 2026</span>
+            </div>
+            <div>
+              <span class="text-gray-600">Category:</span>
+              <span class="font-medium text-gray-900 ml-2">Tools</span>
+            </div>
+            <div>
+              <span class="text-gray-600">Downloads:</span>
+              <span class="font-medium text-gray-900 ml-2">100+</span>
+            </div>
+            <div>
+              <span class="text-gray-600">Contains ads:</span>
+              <span class="font-medium text-gray-900 ml-2">Yes</span>
+            </div>
+            <div>
+              <span class="text-gray-600">Age rating:</span>
+              <span class="font-medium text-gray-900 ml-2">3+</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-gray-200">
+            <p class="text-sm text-gray-600 mb-3">
+              <strong>What's new in latest version:</strong>
+            </p>
+            <p class="text-sm text-gray-700">
+              Bug fix in currency converter to improve stability and reliability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="bg-gradient-to-br from-indigo-900 via-purple-800 to-blue-900 py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="reveal space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">Ready to simplify your daily tasks?</h2>
+          <p class="text-lg text-white/90 max-w-2xl mx-auto">
+            Download EMI & SIP Calculator By RR now and get access to 20+ essential tools in one app.
+          </p>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.roh.tools.beta&hl=en_IN"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-emerald-500 text-white font-bold hover:bg-emerald-600 transition-all shadow-2xl text-lg"
+          >
+            Download now on Play Store
+          </a>
+          <p class="text-sm text-white/70">Free to download • Contains ads</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes section -->
+    <section class="bg-white py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="reveal bg-blue-50 rounded-3xl border border-blue-200 p-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Important notes</h3>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-blue-600 mt-0.5">ℹ️</span>
+              <span>Internet connection may be required for some tools such as online currency conversion.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-blue-600 mt-0.5">ℹ️</span>
+              <span>The app shows ads to support development and keep it free for all users.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-blue-600 mt-0.5">ℹ️</span>
+              <span>
+                For data usage and privacy questions, please see the 
+                <a href="privacy.html" class="text-violet-600 hover:text-violet-700 underline font-medium">Privacy Policy</a>.
+              </span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-blue-600 mt-0.5">ℹ️</span>
+              <span>
+                Have a feature request or found a bug? Contact us through the 
+                <a href="index.html#contact" class="text-violet-600 hover:text-violet-700 underline font-medium">contact form</a>.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 border-t border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-gray-600">
+        <div class="flex items-center gap-3">
+          <div class="w-7 h-7 rounded-lg overflow-hidden">
+            <img src="assets/coderath-logo.png" alt="CodeRath" class="w-full h-full object-cover">
+          </div>
+          <span>© <span id="year"></span> CodeRath. All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap gap-5">
+          <a href="index.html" class="hover:text-violet-600 transition-colors">Back to main site</a>
+          <a href="index.html#toolzy" class="hover:text-violet-600 transition-colors">Toolzy</a>
+          <a href="index.html#contact" class="hover:text-violet-600 transition-colors">Contact</a>
+          <a href="privacy.html" class="hover:text-violet-600 transition-colors">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll reveal animation
+    const revealEls = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add("reveal-visible");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – CodeRath</title>
+  <meta name="description" content="Privacy Policy for CodeRath apps including EMI & SIP Calculator By RR and Toolzy." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased">
+  <div class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6">
+      <!-- Header -->
+      <header class="flex items-center justify-between mb-6 border-b border-slate-800 pb-3">
+        <a href="index.html" class="text-xs text-slate-400 hover:text-sky-300 transition-colors">
+          ← Back to main site
+        </a>
+        <div class="flex flex-col items-end">
+          <span class="text-xs font-semibold tracking-wide uppercase text-sky-300">
+            CodeRath
+          </span>
+          <span class="text-[11px] text-slate-400">Drive with Code</span>
+        </div>
+      </header>
+
+      <main class="prose prose-invert prose-sm max-w-none">
+        <h1>Privacy Policy</h1>
+
+        <p class="text-xs text-slate-400">
+          Last updated: <span id="updated-date"></span>
+        </p>
+
+        <p>
+          This Privacy Policy describes how CodeRath (“we”, “our”, “us”) handles information in its apps and on this website.
+          It currently applies to apps including <strong>EMI &amp; SIP Calculator By RR</strong> and <strong>Toolzy – Calculator &amp; Tools</strong> (once released), as well as any related tools or forms.
+        </p>
+
+        <h2>Information we collect</h2>
+        <p>
+          Our apps are designed primarily as utility tools. Most calculations (for example EMI or SIP inputs) are processed directly on your device and are not sent to our own servers.
+        </p>
+        <ul>
+          <li>
+            <strong>App usage and diagnostics</strong> – Some analytics or crash reporting tools may collect anonymous information about app usage or technical issues to help improve stability.
+          </li>
+          <li>
+            <strong>Advertising identifiers</strong> – If the app shows ads (for example through AdMob or other ad networks), those services may collect device identifiers and usage data as described in their own policies.
+          </li>
+          <li>
+            <strong>Form submissions</strong> – When you contact us using Microsoft Forms or similar services, the data you submit (such as your email address and message) is stored by that service and shared with us so we can respond.
+          </li>
+        </ul>
+
+        <h2>How we use information</h2>
+        <ul>
+          <li>To provide core features like calculations, converters and utilities within the apps.</li>
+          <li>To improve app performance, stability and user experience over time.</li>
+          <li>To respond to support requests, feature requests and bug reports you send via forms or email.</li>
+        </ul>
+
+        <h2>Third‑party services</h2>
+        <p>
+          Our apps and this website may rely on third‑party services for analytics, crash reporting or advertising.
+          These services have their own privacy policies and may collect information independently.
+        </p>
+        <ul>
+          <li>Advertising networks such as Google AdMob / AdSense.</li>
+          <li>Analytics or crash reporting services (if enabled in the future).</li>
+          <li>Form services such as Microsoft Forms used for contact requests.</li>
+        </ul>
+
+        <h2>Data retention</h2>
+        <p>
+          We keep form submissions and related communication only for as long as necessary to handle your request or maintain reasonable records of support.
+          You can request that we remove your contact details from our records unless we are required to keep them for legal reasons.
+        </p>
+
+        <h2>Your choices</h2>
+        <ul>
+          <li>You can uninstall any app at any time from your device.</li>
+          <li>You can decline or reset ad personalization in your device’s system settings or Google account where supported.</li>
+          <li>You may choose not to submit any personal information through forms; however, that may limit our ability to respond to your request.</li>
+        </ul>
+
+        <h2>Children’s privacy</h2>
+        <p>
+          Our apps and this website are not primarily targeted at children. If you believe a child has provided personal information through our forms, please contact us so we can review and handle the situation appropriately.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          We may update this Privacy Policy as apps or services change. Any updates will be posted on this page with a revised “Last updated” date.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          If you have questions about this Privacy Policy or how your information is handled, you can contact us using the form on the main site or by email:
+        </p>
+        <p>
+          <strong>Email:</strong> <em>[your‑contact‑email@example.com]</em>
+        </p>
+      </main>
+
+      <footer class="mt-10 border-t border-slate-800 pt-4 text-[11px] text-slate-500 flex items-center justify-between">
+        <span>© <span id="year"></span> CodeRath.</span>
+        <a href="index.html" class="hover:text-sky-300 transition-colors">Back to main site</a>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const now = new Date();
+    document.getElementById("year").textContent = now.getFullYear();
+    document.getElementById("updated-date").textContent = now.toLocaleDateString();
+  </script>
+</body>
+</html>
